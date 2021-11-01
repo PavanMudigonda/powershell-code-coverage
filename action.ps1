@@ -92,7 +92,7 @@ function Publish-ToCheckRun {
     $conclusion = 'neutral'
     
 
-    $url = "https://api.github.com/repos/$repoFullName/check-runs"
+    $url = "https://api.github.com/repos/PavanMudigonda/powershell-code-coverage/check-runs"
     $hdr = @{
         Accept = 'application/vnd.github.antiope-preview+json'
         Authorization = "token $ghToken"
