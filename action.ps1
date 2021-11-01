@@ -30,7 +30,7 @@ $inputs = @{
 $tmpDir = [System.IO.Path]::Combine($PWD, '_TMP')
 Write-ActionInfo "Resolved tmpDir as [$tmpDir]"
 $test_results_path = $inputs.test_results_path
-$test_report_path = Join-Path $tmpDir code-coverage.md
+$test_report_path = Join-Path $tmpDir coverage/code-coverage.md
 
 New-Item -Name $tmpDir -ItemType Directory -Force -ErrorAction Ignore
 
