@@ -26,7 +26,7 @@ $inputs = @{
     total_lines                         = 100
     covered_lines                       = 33
     notcovered_lines                    = 67
-    $code_coverage_path = ''
+    $code_coverage_path = 'coverage/code-coverage.md'
 
     # test_results_path                   = Get-ActionInput code_coverage_path
     # report_name                         = Get-ActionInput report_name
@@ -43,7 +43,7 @@ $inputs = @{
 $tmpDir = [System.IO.Path]::Combine($PWD, '_TMP')
 Write-ActionInfo "Resolved tmpDir as [$tmpDir]"
 # $test_results_path = $inputs.test_results_path
-$code_coverage_path = 'coverage/code-coverage.md'
+
 
 # New-Item -Name $tmpDir -ItemType Directory -Force -ErrorAction Ignore
 
