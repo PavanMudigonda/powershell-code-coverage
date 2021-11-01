@@ -14,7 +14,7 @@ on:
 
 jobs:
 
-  run-tests:
+  run-code-coverage:
     strategy:
       matrix:
         os:
