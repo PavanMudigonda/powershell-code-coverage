@@ -26,7 +26,7 @@ $inputs = @{
     total_lines                         = 100
     covered_lines                       = 33
     notcovered_lines                    = 67
-    $code_coverage_path = 'coverage/code-coverage.md'
+    $code_coverage_path = coverage/code-coverage.md
 
     # test_results_path                   = Get-ActionInput code_coverage_path
     # report_name                         = Get-ActionInput report_name
@@ -113,7 +113,7 @@ function Publish-ToCheckRun {
 
 Write-ActionInfo "Generating Markdown Report from TRX file"
 Build-MarkdownReport
-$reportData = [System.IO.File]::ReadAllText($test_report_path)
+$reportData = [System.IO.File]::ReadAllText($code_coverage_path)
 
 if ($inputs.skip_check_run -ne $true) {
     Publish-ToCheckRun -ReportData $reportData
