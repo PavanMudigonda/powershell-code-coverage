@@ -1,7 +1,3 @@
-
-## This is a SAMPLE metadata file for a GitHub Action.  For more info:
-##    https://help.github.com/en/articles/metadata-syntax-for-github-actions
-
 name: code-coverage-reporter
 author: Pavan Mudigonda
 description: |
@@ -16,6 +12,7 @@ inputs:
     description: |
       Path to the Code coverage file
     required: true
+    
 
   report_name:
     description: |
