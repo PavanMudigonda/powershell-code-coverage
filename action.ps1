@@ -27,6 +27,10 @@ $inputs = @{
     notcovered_lines                    = Get-ActionInput notcovered_lines
 }
 
+test_results_path = "coverage/code-coverage.xml"
+report_name = "Code Coverage"
+report_title = "Code Coverage using Jacoco"
+
 $tmpDir = [System.IO.Path]::Combine($PWD, '_TMP')
 Write-ActionInfo "Resolved tmpDir as [$tmpDir]"
 $test_results_path = $inputs.test_results_path
@@ -92,7 +96,7 @@ function Publish-ToCheckRun {
         output     = @{
             title   = $report_title
             summary = "This run completed at ``$([datetime]::Now)``"
-            text    = $reportData
+            text    = "Hello"
         }
     }
     Invoke-WebRequest -Headers $hdr $url -Method Post -Body ($bdy | ConvertTo-Json)
