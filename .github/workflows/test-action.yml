@@ -1,0 +1,70 @@
+
+name: test-action
+
+on:
+  workflow_dispatch:
+    inputs:
+      skip_check_run: 
+        description: |
+          false
+        required: false
+  #push:
+  #release:
+  #  types: published
+
+jobs:
+
+  run-tests:
+    strategy:
+      matrix:
+        os:
+          - 'ubuntu-latest'
+    runs-on: ${{ matrix.os }}
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v1
+      
+      - name: use this action, nunit project dir
+        if: ${{ !cancelled() }}  
+        id: testAction3b
+        uses: ./
+        with:
+          project_path: tests/nunit-csharp-samples/syntax
+          report_name: tests_2_nunit-${{ matrix.os }}
+          report_title: Sample NUnit Tests (${{ matrix.os }})
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          gist_name: dotnet-tests-report_nunit-${{ matrix.os }}.md
+          gist_badge_label: 'NUnit Tests: %Counters_passed%/%Counters_total%'
+          gist_token: ${{ secrets.GIST_TOKEN }}
+      
+      - name: dump code coverage results
+        shell: pwsh
+        run: |
+          Write-ActionInfo 'Code Coverage Results: ${{ matrix.os }}'
+          Write-ActionInfo '  Jacoco:'
+          Write-ActionInfo '    * result_value    = ${{ steps.testAction3a.outputs.coverage_value }}'
+          Write-ActionInfo '    * total_count     = ${{ steps.testAction3a.outputs.total_lines }}'
+          Write-ActionInfo '    * passed_count    = ${{ steps.testAction3a.outputs.covered_lines }}'
+          Write-ActionInfo '    * failed_count    = ${{ steps.testAction3a.outputs.notcovered_lines }}'
+
+          Write-ActionInfo ''
+          Write-ActionInfo '  Corbetura:'
+          Write-ActionInfo '    * result_value    = ${{ steps.testAction3a.outputs.coverage_value }}'
+          Write-ActionInfo '    * total_count     = ${{ steps.testAction3a.outputs.total_lines }}'
+          Write-ActionInfo '    * passed_count    = ${{ steps.testAction3a.outputs.covered_lines }}'
+          Write-ActionInfo '    * failed_count    = ${{ steps.testAction3a.outputs.notcovered_lines }}'
+
+          Write-ActionInfo ''
+          Write-ActionInfo '  ICov:'
+          Write-ActionInfo '    * result_value    = ${{ steps.testAction3a.outputs.coverage_value }}'
+          Write-ActionInfo '    * total_count     = ${{ steps.testAction3a.outputs.total_lines }}'
+          Write-ActionInfo '    * passed_count    = ${{ steps.testAction3a.outputs.covered_lines }}'
+          Write-ActionInfo '    * failed_count    = ${{ steps.testAction3a.outputs.notcovered_lines }}'
+          Write-ActionInfo ''
+          Write-ActionInfo '  Istanbul:'
+          Write-ActionInfo '    * result_value    = ${{ steps.testAction3a.outputs.coverage_value }}'
+          Write-ActionInfo '    * total_count     = ${{ steps.testAction3a.outputs.total_lines }}'
+          Write-ActionInfo '    * passed_count    = ${{ steps.testAction3a.outputs.covered_lines }}'
+          Write-ActionInfo '    * failed_count    = ${{ steps.testAction3a.outputs.notcovered_lines }}'
+          Write-ActionInfo ''
