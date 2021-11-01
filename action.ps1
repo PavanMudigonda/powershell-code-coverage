@@ -16,20 +16,29 @@ Import-Module GitHubActions
 . $PSScriptRoot/action_helpers.ps1
 
 $inputs = @{
-    test_results_path                   = Get-ActionInput code_coverage_path
-    report_name                         = Get-ActionInput report_name
-    report_title                        = Get-ActionInput report_title
-    github_token                        = Get-ActionInput github_token -Required
-    skip_check_run                      = Get-ActionInput skip_check_run
-    coverage_value                      = Get-ActionInput coverage_value
-    total_lines                         = Get-ActionInput total_lines
-    covered_lines                       = Get-ActionInput covered_lines
-    notcovered_lines                    = Get-ActionInput notcovered_lines
+
+    test_results_path = "coverage/code-coverage.xml"
+    report_name = "Code Coverage"
+    report_title = "Code Coverage using Jacoco"
+    github_token                        = {{secrets.GITHUB_TOKEN}}
+    skip_check_run                      = false
+    coverage_value                      = "33.33%"
+    total_lines                         = 100
+    covered_lines                       = 33
+    notcovered_lines                    = 67
+
+    # test_results_path                   = Get-ActionInput code_coverage_path
+    # report_name                         = Get-ActionInput report_name
+    # report_title                        = Get-ActionInput report_title
+    # github_token                        = Get-ActionInput github_token -Required
+    # skip_check_run                      = Get-ActionInput skip_check_run
+    # coverage_value                      = Get-ActionInput coverage_value
+    # total_lines                         = Get-ActionInput total_lines
+    # covered_lines                       = Get-ActionInput covered_lines
+    # notcovered_lines                    = Get-ActionInput notcovered_lines
 }
 
-test_results_path = "coverage/code-coverage.xml"
-report_name = "Code Coverage"
-report_title = "Code Coverage using Jacoco"
+
 
 $tmpDir = [System.IO.Path]::Combine($PWD, '_TMP')
 Write-ActionInfo "Resolved tmpDir as [$tmpDir]"
