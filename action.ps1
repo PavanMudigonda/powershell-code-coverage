@@ -95,7 +95,7 @@ function Publish-ToCheckRun {
     $url = "https://api.github.com/repos/PavamMudigonda/powershell-code-coverage/check-runs"
     $hdr = @{
         Accept = 'application/vnd.github.antiope-preview+json'
-        Authorization = "token $ghToken"
+        Authorization = "$ghToken"
     }
     $bdy = @{
         name       = $report_name
