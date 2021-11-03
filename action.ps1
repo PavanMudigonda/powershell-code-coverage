@@ -66,7 +66,7 @@ function Publish-ToCheckRun {
 
     Write-ActionInfo "Publishing Report to GH Workflow"
 
-    $ghToken = '${{secrets.GITHUB_TOKEN}}'
+    $ghToken = '${{secrets_GITHUB_TOKEN}}'
     $ctx = Get-ActionContext
     $repo = Get-ActionRepo
     $repoFullName = "$($repo.Owner)/$($repo.Repo)"
@@ -95,7 +95,7 @@ function Publish-ToCheckRun {
     $url = "https://api.github.com/repos/PavamMudigonda/powershell-code-coverage/check-runs"
     $hdr = @{
         Accept = 'application/vnd.github.antiope-preview+json'
-        Authorization = "$ghToken"
+        Authorization = "token $ghToken"
     }
     $bdy = @{
         name       = $report_name
