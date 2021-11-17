@@ -66,7 +66,7 @@ function Publish-ToCheckRun {
 
     Write-ActionInfo "Publishing Report to GH Workflow"
 
-    $ghToken = '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'
+   $ghToken = $inputs.github_token
     $ctx = Get-ActionContext
     $repo = Get-ActionRepo
     $repoFullName = "$($repo.Owner)/$($repo.Repo)"
