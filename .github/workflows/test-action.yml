@@ -33,7 +33,7 @@ jobs:
           code_coverage_path: coverage/jacoco.xml
           report_name:  code_coverage-${{ matrix.os }}
           report_title: Sample Code Coverage (${{ matrix.os }})
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PS_TOKEN }}
       
       - name: dump code coverage results
         shell: pwsh
