@@ -95,7 +95,7 @@ function Publish-ToCheckRun {
     $url = "https://api.github.com/repos/$repoFullName/check-runs"
     $hdr = @{
         Accept = 'application/vnd.github.antiope-preview+json'
-        Authorization = "token $ghToken"
+        Authorization = "token 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"
     }
     $bdy = @{
         name       = $report_name
