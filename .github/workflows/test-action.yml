@@ -6,7 +6,7 @@ on:
     inputs:
       skip_check_run: 
         description: |
-          false
+          Skip Check Run
         required: false
       github_token: 
         description: |
