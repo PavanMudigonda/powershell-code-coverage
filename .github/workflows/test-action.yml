@@ -10,12 +10,12 @@ on:
         required: false
       github_token: 
         description: |
-          false
-        required: true
+          GITHUB TOKEN
+        required: false
       code_coverage_path:
         description: |
-          false
-        required: true
+          Code Coverage Path
+        required: false
   #push:
   #release:
   #  types: published
