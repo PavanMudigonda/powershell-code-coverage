@@ -8,6 +8,14 @@ on:
         description: |
           false
         required: false
+      github_token: 
+        description: |
+          false
+        required: true
+      code_coverage_path:
+        description: |
+          false
+        required: true
   #push:
   #release:
   #  types: published
